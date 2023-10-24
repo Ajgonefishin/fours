@@ -30,11 +30,6 @@ document.addEventListener('keyup', (e) => {
     keyPressed = ""
 })
 export default function GameBoard() {
-    const [typing, setTyping] = useState("");
-    document.addEventListener('keydown', (e) => {
-        setTyping(inputText)
-    })
-
     return (
         <div className="flex h-screen justify-center items-center">
             <div className="grid grid-cols-1 gap-y-4 justify-items-center border-8 rounded-3xl p-4">
@@ -42,7 +37,7 @@ export default function GameBoard() {
                 <div className="grid grid-cols-4 gap-2">
                     {letterGrid}
                 </div>
-                <CustomInputField text={inputText}/>
+                <CustomInputField />
             </div>
         </div>
     );
@@ -56,10 +51,14 @@ function LetterItem({letter}) {
     )
 }
 function CustomInputField({text}) {
+    const [typing, setTyping] = useState("");
+    document.addEventListener('keydown', (e) => {
+        setTyping(inputText)
+    })
     return (
         <>
             <div className="h-16 bg-gray-300 text-4xl flex items-center justify-center">
-                {text}
+                {inputText}
             </div>
         </>
     );
