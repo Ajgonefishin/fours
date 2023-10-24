@@ -51,14 +51,22 @@ function LetterItem({letter}) {
     )
 }
 function CustomInputField({text}) {
-    const [typing, setTyping] = useState("");
+    const [typing, setTyping] = useState("Start typing...");
     document.addEventListener('keydown', (e) => {
         setTyping(inputText)
     })
+
+    let classInfo = "h-16 text-4xl flex items-center justify-center font-consolas"
+    if (inputText === "") {
+        classInfo += " text-gray-200"
+    } else {
+        classInfo += " text-gray-600"
+    }
+
     return (
         <>
-            <div className="h-16 text-4xl flex items-center justify-center font-consolas text-gray-600">
-                {inputText}
+            <div className={classInfo}>
+                {typing}
             </div>
         </>
     );
