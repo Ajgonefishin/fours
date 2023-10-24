@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function LetterItem({letter}) {
+    return (
+        <div className="h-16 w-16 border-black flex items-center justify-center">
+            {letter}
+        </div>
+    )
 }
 
-export default App;
+export default function GameBoard() {
+  return(
+      <div className="flex h-screen justify-center items-center">
+          <div className="grid grid-cols-1 justify-items-center border-8 rounded-3xl p-4">
+              <h1 className="text-5xl font-roboto font-bold pb-4">
+                  Fours
+              </h1>
+              <p className="text-xl font-roboto">
+                  Given the string of these 4 letters, how many words can you make?
+              </p>
+              <LetterItem letter="X"/>
+          </div>
+      </div>
+  );
+}
