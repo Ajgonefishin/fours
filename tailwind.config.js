@@ -11,7 +11,8 @@ module.exports = {
         '256': '64rem',
       },
       fontFamily: {
-        'roboto': ['Roboto', 'sans-serif']
+        'roboto': ['Roboto', 'sans-serif'],
+        'roboto-slab': ['Roboto Slab', 'serif']
       }
     },
   },
