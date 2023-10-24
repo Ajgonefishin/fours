@@ -9,7 +9,7 @@ const letterGrid = letters.map( (letter) => <LetterItem letter={letter} />)
 let inputText = "";
 let keyPressed = "";
 
-//todo: figure out backspace issue. can only backspace once and it doesn't trim the inputText length
+//todo: figure out new backspace issue - can only backspace once
 document.addEventListener('keydown', (e) => {
     if (keyPressed !== e.code) {
         keyPressed = e.code
@@ -19,8 +19,8 @@ document.addEventListener('keydown', (e) => {
             console.log("Key is in alphabet.")
             inputText += e.key
             console.log(inputText)
-        } else if (e.code === "8") {
-            inputText = inputText.slice(0, inputText.length - 2)
+        } else if (e.code === "Backspace") {
+            inputText = inputText.slice(0, -1)
             console.log(inputText)
         }
     }
@@ -53,7 +53,11 @@ function LetterItem({letter}) {
 function CustomInputField({text}) {
     const [typing, setTyping] = useState("Start typing...");
     document.addEventListener('keydown', (e) => {
-        setTyping(inputText)
+        if(inputText === "") {
+            setTyping("Start typing...")
+        } else {
+            setTyping(inputText)
+        }
     })
 
     let classInfo = "h-16 text-4xl flex items-center justify-center font-consolas"
