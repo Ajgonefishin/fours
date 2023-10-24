@@ -57,7 +57,7 @@ function CustomInputField({text}) {
     })
     return (
         <>
-            <div className="h-16 bg-gray-300 text-4xl flex items-center justify-center">
+            <div className="h-16 text-4xl flex items-center justify-center font-consolas text-gray-600">
                 {inputText}
             </div>
         </>
