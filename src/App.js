@@ -2,17 +2,15 @@ import {useState} from "react";
 
 //todo: actually dynamically change the letters
 //set the letters and return a grid with those letters
-const text = "RAKE"
-const letters = text.split("")
-const letterGrid = letters.map( (letter) => <LetterItem letter={letter} />)
 
 let inputText = "";
 let keyPressed = "";
 
-//todo: figure out new backspace issue - can only backspace once
 document.addEventListener('keydown', (e) => {
     if (keyPressed !== e.code) {
-        keyPressed = e.code
+        if (e.code !== "Backspace") {
+            keyPressed = e.code
+        }
         console.log("Key pressed: " + e.key)
         const alphabet = "qwertyuiopasdfghjklzxcvbnm".split("")
         if(alphabet.includes(e.key)) {
@@ -29,6 +27,11 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
     keyPressed = ""
 })
+
+const text = "RAKE"
+const letters = text.split("")
+const letterGrid = letters.map( (letter) => <LetterItem letter={letter} />)
+
 export default function GameBoard() {
     return (
         <div className="flex h-screen justify-center items-center">
@@ -50,17 +53,17 @@ function LetterItem({letter}) {
         </div>
     )
 }
-function CustomInputField({text}) {
+function CustomInputField() {
     const [typing, setTyping] = useState("Start typing...");
     document.addEventListener('keydown', (e) => {
         if(inputText === "") {
-            setTyping("Start typing...")
+            setTyping("")
         } else {
             setTyping(inputText)
         }
     })
 
-    let classInfo = "h-16 text-4xl flex items-center justify-center font-consolas"
+    let classInfo = "h-12 text-4xl flex items-center justify-center font-consolas"
     if (inputText === "") {
         classInfo += " text-gray-200"
     } else {
@@ -71,6 +74,7 @@ function CustomInputField({text}) {
         <>
             <div className={classInfo}>
                 {typing}
+                <div className="w-1 h-12 bg-black animate-blink" />
             </div>
         </>
     );
@@ -83,7 +87,7 @@ function IntroTextBox() {
                 Fours
             </h1>
             <p className="text-xl font-roboto-slab">
-                Given this string of 4 letters, how many words can you make?
+                How many words can you make that contain this exact string of four letters?
             </p>
         </>
     )

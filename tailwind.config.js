@@ -14,6 +14,15 @@ module.exports = {
         'roboto': ['Roboto', 'sans-serif'],
         'roboto-slab': ['Roboto Slab', 'serif'],
         'consolas': ['Consolas', 'mono']
+      },
+      animation: {
+        blink: 'blink 1s steps(1, start) infinite'
+      },
+      keyframes: {
+        blink: {
+          '50%': {opacity: 0.0},
+          '100%': {opacity: 1.0}
+        }
       }
     },
   },
